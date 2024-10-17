@@ -1,10 +1,18 @@
 {
   "manifest_version": 3,
-  "name": "Hello Extensions",
-  "description": "Base Level Extension",
+  "name": "Daily Affirmations",
+  "description": "Boost your day with uplifting affirmations delivered right to your screen!",
   "version": "1.0",
+  "permissions": ["storage", "alarms", "activeTab", "scripting"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["main.js"]
+    }
+  ],
   "action": {
-    "default_popup": "hello.html",
-    "default_icon": "hello_extensions.png"
+    "default_popup": "index.html",
+    "default_icon": "icon.png"
   }
 }
