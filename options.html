@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set Predefined Interval</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      select,
+      button {
+        margin: 10px 0;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Select Your Interval Time</h2>
+
+    <!-- Dropdown to select between predefined intervals -->
+    <label for="intervalSelect">Choose interval: </label>
+    <select id="intervalSelect">
+      <option value="5000">High-Frequency Positivity</option>
+      <option value="60000">5 Minute</option>
+      <option value="300000">10 Minutes</option>
+      <option value="600000">30 Minutes</option>
+      <option value="1800000">60 Minutes</option>
+    </select>
+    <button id="saveInterval">Save Interval</button>
+
+    <!-- Confirmation message -->
+    <p id="status"></p>
+
+    <script>
+      // Load the saved interval from localStorage (or chrome.storage.sync)
+      document.addEventListener('DOMContentLoaded', function () {
+        const savedInterval = localStorage.getItem('intervalTime');
+        if (savedInterval) {
+          document.getElementById('intervalSelect').value = savedInterval;
+        }
+      });
+
+      // Save the user-defined interval
+      document
+        .getElementById('saveInterval')
+        .addEventListener('click', function () {
+          const intervalTime = document.getElementById('intervalSelect').value;
+
+          // Store the interval time in localStorage (or use chrome.storage.sync)
+          localStorage.setItem('intervalTime', intervalTime);
+
+          // Update status to confirm save
+          document.getElementById('status').innerText = 'Interval time saved!';
+        });
+    </script>
+  </body>
+</html>

@@ -3,6 +3,12 @@
   "name": "Daily Affirmations",
   "description": "Boost your day with uplifting affirmations delivered right to your screen!",
   "version": "1.0",
+  "options_page": "options.html",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
   "permissions": [
     "storage",
     "alarms",
@@ -18,7 +24,11 @@
     }
   ],
   "action": {
-    "default_popup": "index.html",
-    "default_icon": "icon.png"
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    },
+    "default_popup": "index.html"
   }
 }

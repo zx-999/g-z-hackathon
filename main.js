@@ -60,9 +60,15 @@
 const affirmationDiv = document.createElement('div');
 affirmationDiv.id = 'affirmation-container';
 affirmationDiv.style.position = 'fixed';
-affirmationDiv.style.bottom = '10px';
-affirmationDiv.style.right = '10px';
+affirmationDiv.style.bottom = '20px';
+affirmationDiv.style.right = '20px';
 affirmationDiv.style.padding = '15px';
+affirmationDiv.style.background = 'linear-gradient(to right,#ffafbd,#ffdca0)';
+affirmationDiv.style.width = '200px';
+affirmationDiv.style.height = 'auto';
+affirmationDiv.style.borderRadius = '20px';
+affirmationDiv.style.textAlign = 'center';
+
 affirmationDiv.style.fontFamily = 'Arial, sans-serif';
 affirmationDiv.style.fontSize = '14px';
 affirmationDiv.style.transition = 'opacity 1s ease-in-out';
