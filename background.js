@@ -2,13 +2,14 @@
 
 // add event listener when installed
 chrome.runtime.onInstalled.addListener(() => {
-  chrome.alarms.create('fetchAffirmation', { periodInMinutes: 1 });
+  chrome.alarms.create('fetchAffirmation', { when: Date.now() });
 });
 
 // listens when fetch affirmation is triggered
 // will fetch affirmation at set interval
 chrome.alarms.onAlarm.addListener((alarm) => {
   if (alarm.name === 'fetchAffirmation') {
+    setInterval(fetchAffirmation, 5000);
     fetchAffirmation();
   }
 });
@@ -37,18 +38,3 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true; // Keeps the message channel open for async response
   }
 });
-
-// NOTIFICATIONS
-function fetchAffirmationMessage() {
-  fetch('https://www.affirmations.dev/')
-    .then((response) => response.json())
-    .then((data) => {
-      chrome.storage.local.set({ affirmation: data.affirmation });
-      console.log('Affirmation updated:', data.affirmation);
-    })
-    .catch((error) => {
-      console.error('Fetch error', error);
-    });
-}
-
-cons;

@@ -3,7 +3,13 @@
   "name": "Daily Affirmations",
   "description": "Boost your day with uplifting affirmations delivered right to your screen!",
   "version": "1.0",
-  "permissions": ["storage", "alarms", "activeTab", "scripting"],
+  "permissions": [
+    "storage",
+    "alarms",
+    "activeTab",
+    "scripting",
+    "notifications"
+  ],
   "background": { "service_worker": "background.js" },
   "content_scripts": [
     {

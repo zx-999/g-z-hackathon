@@ -1,36 +1,57 @@
 // document.addEventListener('DOMContentLoaded', () => {
+// const retrievedAffirmation = chrome.storage.local.get('affirmation');
+// console.log(retrievedAffirmation);
+// const createNotification = (affirmationText) => {
+//   const notificationID = 'notification_ID';
+//   chrome.notifications.create(
+//     notificationID,
+//     {
+//       type: 'basic',
+//       title: 'Affirmation time',
+//       message: affirmationText,
+//       priority: 2,
+//     },
+//     () => {
+//       setTimeout(() => {
+//         chrome.notifications.clear(notificationID);
+//       }, 1000);
+//     }
+//   );
+// };
+
 //   // refers to the toggle
 //   const toggleSwitch = document.getElementById('toggleContainer');
 //   // refers to the location that the affirmation will pop up
 //   // NEEDS TO BE CHANGED TO THE NEW POPUP WINDOW
 //   // wait until switch is toggled on
-//   let popupWindow;
+//   // let popupWindow;
 //   toggleSwitch.addEventListener('change', () => {
 //     // if it's on, append text to the affirmation text location
 //     if (toggleSwitch.checked) {
-//       popupWindow = window.open(
-//         'popup.html',
-//         'affirmation pop up',
-//         'width=400,height=200'
-//       );
-//       popupWindow.onload = () => {
-//         const affirmationDiv = document.createElement('div');
-//         affirmationDiv.id = 'affirmation-container';
-//         affirmationDiv.style.position = 'fixed';
-//         affirmationDiv.style.bottom = '10px';
-//         affirmationDiv.style.right = '10px';
-//         affirmationDiv.style.padding = '10px';
-//         affirmationDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-//         affirmationDiv.style.borderRadius = '5px';
-//         affirmationDiv.style.fontFamily = 'Arial, sans-serif';
-//         affirmationDiv.style.fontSize = '14px';
-//         affirmationDiv.style.zIndex = '10000'; // Ensures it stays on top of the page
-//         affirmationDiv.style.display = 'none'; // Hidden initially
-//         updateAffirmation(affirmationDiv);
-//         document.body.appendChild(affirmationDiv);
-//       };
+//       createNotification(retrievedAffirmation);
+//       // popupWindow = window.open(
+//       //   'popup.html',
+//       //   'affirmation pop up',
+//       //   'width=400,height=200'
+//       // );
+//       // popupWindow.onload = () => {
+//       //   const affirmationDiv = document.createElement('div');
+//       //   affirmationDiv.id = 'affirmation-container';
+//       //   affirmationDiv.style.position = 'fixed';
+//       //   affirmationDiv.style.bottom = '10px';
+//       //   affirmationDiv.style.right = '10px';
+//       //   affirmationDiv.style.padding = '10px';
+//       //   affirmationDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+//       //   affirmationDiv.style.borderRadius = '5px';
+//       //   affirmationDiv.style.fontFamily = 'Arial, sans-serif';
+//       //   affirmationDiv.style.fontSize = '14px';
+//       //   affirmationDiv.style.zIndex = '10000'; // Ensures it stays on top of the page
+//       //   affirmationDiv.style.display = 'none'; // Hidden initially
+//       //   updateAffirmation(affirmationDiv);
+//       //   document.body.appendChild(affirmationDiv);
+//       // };
 //     } else {
-//       if (popupWindow) popupWindow.close();
+//       console.log('nothing');
 //     }
 //   });
 // });
@@ -41,11 +62,10 @@ affirmationDiv.id = 'affirmation-container';
 affirmationDiv.style.position = 'fixed';
 affirmationDiv.style.bottom = '10px';
 affirmationDiv.style.right = '10px';
-affirmationDiv.style.padding = '10px';
-affirmationDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-affirmationDiv.style.borderRadius = '5px';
+affirmationDiv.style.padding = '15px';
 affirmationDiv.style.fontFamily = 'Arial, sans-serif';
 affirmationDiv.style.fontSize = '14px';
+affirmationDiv.style.transition = 'opacity 1s ease-in-out';
 affirmationDiv.style.zIndex = '10000'; // Ensures it stays on top of the page
 affirmationDiv.style.display = 'none'; // Hidden initially
 
@@ -65,4 +85,4 @@ function updateAffirmation() {
 // display a new affiramtion every 1 min????
 // listen for message from the background script
 updateAffirmation();
-setInterval(updateAffirmation, 30000); // set for 1 min
+setInterval(updateAffirmation, 5000);
